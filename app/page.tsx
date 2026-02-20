@@ -2,12 +2,23 @@
 
 import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
+import type { KeyboardControlsEntry } from "@react-three/drei";
 import { useState } from "react";
-import FirstPersonController, { controlsMap } from "@/components/FirstPersonController";
+
+import FirstPersonController from "@/components/FirstPersonController";
 import MuseumScene from "@/components/MuseumScene";
 import OverlayHUD from "@/components/OverlayHUD";
 import ProjectModal from "@/components/ProjectModal";
 import type { Project } from "@/types/project";
+
+const controlsMap: KeyboardControlsEntry<string>[] = [
+  { name: "forward", keys: ["KeyW", "ArrowUp"] },
+  { name: "backward", keys: ["KeyS", "ArrowDown"] },
+  { name: "left", keys: ["KeyA", "ArrowLeft"] },
+  { name: "right", keys: ["KeyD", "ArrowRight"] },
+  { name: "jump", keys: ["Space"] },
+  { name: "run", keys: ["ShiftLeft"] },
+];
 
 export default function HomePage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
